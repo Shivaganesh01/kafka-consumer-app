@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.example.kafkaconsumer.models.avro;
+package com.example.avro;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
@@ -15,10 +15,10 @@ import org.apache.avro.message.SchemaStore;
 /** This is a sample Avro schema to get you started. Please edit */
 @org.apache.avro.specific.AvroGenerated
 public class MyRecord extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -2099066330829220469L;
+  private static final long serialVersionUID = 5078228187953181963L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MyRecord\",\"namespace\":\"com.example.kafkaconsumer.models.avro\",\"doc\":\"This is a sample Avro schema to get you started. Please edit\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MyRecord\",\"namespace\":\"com.example.avro\",\"doc\":\"This is a sample Avro schema to get you started. Please edit\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -130,8 +130,8 @@ public class MyRecord extends org.apache.avro.specific.SpecificRecordBase implem
    * Creates a new MyRecord RecordBuilder.
    * @return A new MyRecord RecordBuilder
    */
-  public static com.example.kafkaconsumer.models.avro.MyRecord.Builder newBuilder() {
-    return new com.example.kafkaconsumer.models.avro.MyRecord.Builder();
+  public static com.example.avro.MyRecord.Builder newBuilder() {
+    return new com.example.avro.MyRecord.Builder();
   }
 
   /**
@@ -139,11 +139,11 @@ public class MyRecord extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing builder to copy.
    * @return A new MyRecord RecordBuilder
    */
-  public static com.example.kafkaconsumer.models.avro.MyRecord.Builder newBuilder(com.example.kafkaconsumer.models.avro.MyRecord.Builder other) {
+  public static com.example.avro.MyRecord.Builder newBuilder(com.example.avro.MyRecord.Builder other) {
     if (other == null) {
-      return new com.example.kafkaconsumer.models.avro.MyRecord.Builder();
+      return new com.example.avro.MyRecord.Builder();
     } else {
-      return new com.example.kafkaconsumer.models.avro.MyRecord.Builder(other);
+      return new com.example.avro.MyRecord.Builder(other);
     }
   }
 
@@ -152,11 +152,11 @@ public class MyRecord extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing instance to copy.
    * @return A new MyRecord RecordBuilder
    */
-  public static com.example.kafkaconsumer.models.avro.MyRecord.Builder newBuilder(com.example.kafkaconsumer.models.avro.MyRecord other) {
+  public static com.example.avro.MyRecord.Builder newBuilder(com.example.avro.MyRecord other) {
     if (other == null) {
-      return new com.example.kafkaconsumer.models.avro.MyRecord.Builder();
+      return new com.example.avro.MyRecord.Builder();
     } else {
-      return new com.example.kafkaconsumer.models.avro.MyRecord.Builder(other);
+      return new com.example.avro.MyRecord.Builder(other);
     }
   }
 
@@ -178,7 +178,7 @@ public class MyRecord extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.example.kafkaconsumer.models.avro.MyRecord.Builder other) {
+    private Builder(com.example.avro.MyRecord.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.name)) {
         this.name = data().deepCopy(fields()[0].schema(), other.name);
@@ -190,7 +190,7 @@ public class MyRecord extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing MyRecord instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.example.kafkaconsumer.models.avro.MyRecord other) {
+    private Builder(com.example.avro.MyRecord other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.name)) {
         this.name = data().deepCopy(fields()[0].schema(), other.name);
@@ -212,7 +212,7 @@ public class MyRecord extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public com.example.kafkaconsumer.models.avro.MyRecord.Builder setName(java.lang.CharSequence value) {
+    public com.example.avro.MyRecord.Builder setName(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.name = value;
       fieldSetFlags()[0] = true;
@@ -232,7 +232,7 @@ public class MyRecord extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'name' field.
       * @return This builder.
       */
-    public com.example.kafkaconsumer.models.avro.MyRecord.Builder clearName() {
+    public com.example.avro.MyRecord.Builder clearName() {
       name = null;
       fieldSetFlags()[0] = false;
       return this;

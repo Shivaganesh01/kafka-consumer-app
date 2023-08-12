@@ -1,0 +1,12 @@
+{
+	"type": "record",
+	"name": "MyRecord",
+	"namespace": "com.example.avro",
+	"doc": "This is a sample Avro schema to get you started. Please edit",
+	"fields": [
+		{
+			"name": "name",
+			"type": "string"
+		}
+	]
+}

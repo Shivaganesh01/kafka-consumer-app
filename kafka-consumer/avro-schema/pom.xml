@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.2</version>
+        <relativePath/>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>avro-schema</artifactId>
+    <version>1.0.0</version>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <avro.version>1.11.1</avro.version>
+        <confluent.version>7.4.0</confluent.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>${avro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
+            <version>${confluent.version}</version>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>confluent</id>
+            <name>Confluent</name>
+            <url>https://packages.confluent.io/maven/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro-maven-plugin</artifactId>
+                <version>${avro.version}</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>schema</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${project.basedir}/src/main/resources/avro</sourceDirectory>
+                            <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+                            <createSetters>false</createSetters>
+                            <enableDecimalLogicalType>true</enableDecimalLogicalType>
+                            <fieldVisibility>private</fieldVisibility>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--			<plugin>-->
+            <!--				<groupId>org.springframework.boot</groupId>-->
+            <!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--			</plugin>-->
+            <plugin>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-schema-registry-maven-plugin</artifactId>
+                <version>${confluent.version}</version>
+                <configuration>
+                    <schemaRegistryUrls>
+                        <param>http://localhost:8081</param>
+                    </schemaRegistryUrls>
+                    <subjects>
+                        <my-record-value>${project.basedir}/src/main/resources/avro/my-record.avsc</my-record-value>
+                    </subjects>
+                </configuration>
+                <goals>
+                    <goal>register</goal>
+                </goals>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
