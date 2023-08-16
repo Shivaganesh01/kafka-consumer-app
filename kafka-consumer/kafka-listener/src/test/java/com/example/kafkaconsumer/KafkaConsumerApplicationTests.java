@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 class KafkaConsumerApplicationTests {
@@ -31,7 +32,7 @@ class KafkaConsumerApplicationTests {
 
 
     @Test
-    void testListen() {
+    void testListen() throws IOException, NoSuchFieldException, ClassNotFoundException, IllegalAccessException {
         myKafkaListener.listen(message.getHeaders(), message.getPayload());
     }
 
